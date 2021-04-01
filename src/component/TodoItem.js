@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function TodoItem(props){
-	console.log("child render!");
 	const { content, deleteItem, index }  = props;
 
 	const handleClick = function () {
@@ -22,8 +21,8 @@ TodoItem.propTypes = {
 	index: PropTypes.number
 }
 
-const areEqual = (prevProps, nextProps) => true; // never re-render
+// const areEqual = (prevProps, nextProps) => true; // never re-render
 
-const MemomizedTodoItem = React.memo(TodoItem, areEqual);
+const MemomizedTodoItem = React.memo(TodoItem);
  
 export default MemomizedTodoItem;
