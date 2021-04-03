@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM } from "./action"
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, FETCH_INIT_LIST } from "./action"
 
 const defaultState = {
     inputValue: '',
@@ -17,6 +17,17 @@ const todoReducer = (state = defaultState, action) => {
                 inputValue: '',
                 list: [...state.list, state.inputValue]
             };
+        case DELETE_TODO_ITEM:
+            const newList = state.list.filter((item, index)=>index!==action.index)
+            return {
+                ...state,
+                list: newList
+            };
+        case FETCH_INIT_LIST:
+            return{
+                inputValue: '',
+                list: action.data
+            }
         default:
             return state;
     }
